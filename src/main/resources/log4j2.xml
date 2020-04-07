@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" name="MyApp" packages="">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <File name="MyFile" fileName="logs/appIncorrect.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <LevelRangeFilter minLevel="WARN" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="MyFile2" fileName="logs/appSearch.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="MyFile3" fileName="logs/appErrors.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+    </appenders>
+
+    <loggers>
+        <root level="all" additivity="true">
+            <appender-ref ref="MyFile3" level="ERROR"/>
+            <appender-ref ref="MyFile" level="WARN"/>
+            <appender-ref ref="MyFile2" level="INFO"/>
+        </root>
+
+    </loggers>
+</configuration>
